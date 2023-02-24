@@ -1,4 +1,8 @@
-FROM httpd:2.4
+FROM ubuntu 
+RUN apt update 
+RUN apt install –y apache2 
+RUN apt install –y apache2-utils 
+RUN apt clean 
+EXPOSE 80
 COPY ./HelloWorld.html /usr/local/apache2/htdocs/
-RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "-y", "vim"]
+RUN "echo ServerName 127.0.0.1" >> /etc/httpd/conf/httpd.conf
